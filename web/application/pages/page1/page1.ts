@@ -1,4 +1,5 @@
-import {Component} from "@angular/core";
+import {Component, ViewChild} from "@angular/core";
+import {Control1} from "../../controls/control1/control1";
 
 
 @Component({
@@ -8,4 +9,11 @@ import {Component} from "@angular/core";
 })
 export class Page1 {
 
+    @ViewChild(Control1)
+    private  control1:Control1;
+
+    protected clickHandler():void{
+        console.log('нажали 1');
+        this.control1.logger();
+    }
 }

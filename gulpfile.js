@@ -15,12 +15,7 @@ var gulp = require('gulp'),
 gulp.task('debug:clean', function () {
     return del('build/debug/**/*');
 });
-gulp.task('debug:html', function () {
-    return gulp
-        .src(['application/**/*.html',
-        '!application/index.html'])
-        .pipe(gulp.dest('build/debug/app'))
-});
+
 gulp.task('debug:sass', function () {
     return gulp
         .src(['application/**/*.scss'])
@@ -29,19 +24,19 @@ gulp.task('debug:sass', function () {
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('build/debug'))
 });
-gulp.task('debug:inject', ['debug:html', 'debug:sass'], function () {
+gulp.task('debug:inject', function () {
     let libs = gulp.src([
         'node_modules/zone.js/dist/zone.js',
         'node_modules/reflect-metadata/Reflect.js',
         'node_modules/systemjs/dist/system.src.js',
-        'config.js',
-        'build/debug/**/*.css'
+        'web/application/system.js',
+        //'web/styles/*.css'
     ], {read: false});
 
     return gulp
-        .src('application/index.html')
-        .pipe(inject(libs))
-        .pipe(gulp.dest('.'));
+        .src('web/views/index.pug')
+        .pipe(inject(libs,{ignorePath:['node_modules','web/application']}))
+        .pipe(gulp.dest('web/views'));
 });
 
 

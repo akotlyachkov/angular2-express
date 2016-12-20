@@ -1,7 +1,7 @@
-var express = require('express'),
+const express = require('express'),
     helmet = require('helmet'),
     path = require('path'),
-    favicon = require('favicon'),
+    //favicon = require('favicon'),
     compression = require('compression'),
     app = express(),
     http = require('http'),
@@ -9,15 +9,15 @@ var express = require('express'),
     web = require('./web');
 
 app.use(helmet());
-app.use(favicon(path.join(__dirname , 'web/favicon/favicon.ico')));
+//app.use(favicon(path.join(__dirname, 'web/favicon/favicon.ico')));
 //app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({extended: false}));
 app.use(compression());
 
 
-app.use(express.static(path.join(__dirname,'node_modules')));
-app.use(express.static(path.join(__dirname,'web/styles')));
-app.use(express.static(path.join(__dirname,'web/application')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
+app.use(express.static(path.join(__dirname, 'web/styles')));
+app.use(express.static(path.join(__dirname, 'web/application')));
 
 app.use('/', web);
 app.set('port', process.env.PORT || '3001');
