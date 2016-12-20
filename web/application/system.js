@@ -16,7 +16,7 @@ System.config({
 
     packages: packages,
 
-    paths: {"npm:*": "node_modules/*"},
+    paths: {"npm:*": "/*"},
 
     map: {
         "@angular": "npm:@angular",
@@ -24,4 +24,4 @@ System.config({
     }
 });
 
-System.import('build/debug/app/main');
+System.import('main');
