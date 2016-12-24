@@ -9,12 +9,13 @@
         "removeComments": false,
         "noImplicitAny": true,
         "suppressImplicitAnyIndexErrors": true,
+
         "typeRoots": [
             "./node_modules/@types"
         ]
     },
     "include": [
-        "./build/compiled/main.ts"
+        "build/compiled/main.ts"
     ],
     "angularCompilerOptions": {
         "skipMetadataEmit" : true

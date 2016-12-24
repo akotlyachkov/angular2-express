@@ -1,5 +1,4 @@
-import {Component} from "@angular/core";
-
+import {Component, EventEmitter, Output} from "@angular/core";
 
 @Component({
     moduleId: module.id,
@@ -8,4 +7,13 @@ import {Component} from "@angular/core";
 })
 export class Control2 {
 
+    @Output()
+    onClick = new EventEmitter<string>();
+
+
+
+
+    clickHandler(): void {
+        this.onClick.emit("privet")
+    }
 }
